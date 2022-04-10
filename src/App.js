@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Register from "./pages/register";
+//import "./App.css";
+
+import testsrc from "./testsrc";
+import $ from 'jquery';
+window.jQuery = $;
+window.jquery = $; 
 
 function App() {
+  useEffect(() => {
+    console.log('lorem');
+    //testsrc;
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {/* <button onClick={window['alertHello']}>alert</button>  */}
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/register" element={<Register />}></Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 

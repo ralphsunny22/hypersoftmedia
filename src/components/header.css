@@ -1,0 +1,19 @@
+
+
+
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.scrolled{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #43373D;
+}
+
+.nav-alt-color {
+    color: #43373D !important;
+}
