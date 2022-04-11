@@ -17,3 +17,9 @@
 .nav-alt-color {
     color: #43373D !important;
 }
+
+button, [type='button'], [type='reset'], [type='submit'] {
+    -webkit-appearance: button;
+    background-color: #1c1c1c;
+    background-image: none;
+}

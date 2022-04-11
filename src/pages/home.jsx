@@ -1,15 +1,14 @@
 import React, { useEffect, useRef } from "react";
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import OwlCarousel from 'react-owl-carousel';  
-import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 import Typed from "typed.js";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
+import Blogs from "./blogs";
 
 
-const Home = () => {
+const Home = ({posts}) => {
 
     // Create Ref element.
   const el = useRef(null);
@@ -188,98 +187,7 @@ const Home = () => {
     
 
     {/* Blog */}
-    <section name="blog" className="blog section-padding bg-gray" data-scroll-index="4">
-        <div className="container">
-            <div className="row">
-
-                <div className="section-head text-center col-sm-12">
-                    <h4>Our Blog</h4>
-                    <h6>Latest News</h6>
-                </div>
-
-                 
-
-                {/* <!-- Posts --> */}
-                <OwlCarousel loop={true} items={3} margin={30} autoplay ={true} >
-                    {/* loop:true,
-                    margin: 30,
-                    mouseDrag:false,
-                    autoplay:true,
-                    smartSpeed:500,
-                    responsiveClass:true, */}
-                    <div className="item mb-30">
-                        <div className="post-img">
-                            <img src="./assets/img/blog/1.jpg" alt="" />
-                        </div>
-                        <div className="content">
-                            <span><a href="#0">August 06 , 2017</a></span>
-                            <span>/</span>
-                            <span><a href="#0">
-                                <em>WordPress</em>
-                            </a></span>
-                            <h5><a href="#0">48 Best WordPress Themes</a></h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the dummy text ever</p>
-                            <a href="#0" className="more">Continue Reading<i className="fas fa-angle-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div className="item">
-                        <div className="post-img">
-                            <img src="./assets/img/blog/2.jpg" alt="" />
-                        </div>
-                        <div className="content">
-                            <span><a href="#0">August 06 , 2017</a></span>
-                            <span>/</span>
-                            <span><a href="#0">
-                                <em>WordPress</em>
-                            </a></span>
-                            <h5><a href="#0">Managing Their Own Websites</a></h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the dummy text ever</p>
-                            <a href="#0" className="more">Continue Reading<i className="fas fa-angle-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div className="item">
-                        <div className="post-img">
-                            <img src="./assets/img/blog/3.jpg" alt="" />
-                        </div>
-                        <div className="content">
-                            <span><a href="#0">August 06 , 2017</a></span>
-                            <span>/</span>
-                            <span><a href="#0">
-                                <em>WordPress</em>
-                            </a></span>
-                            <h5><a href="#0">Master These Awesome Skills</a></h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the dummy text ever</p>
-                            <a href="#0" className="more">Continue Reading<i className="fas fa-angle-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div className="item">
-                        <div className="post-img">
-                            <img src="./assets/img/blog/2.jpg" alt="" />
-                        </div>
-                        <div className="content">
-                            <span><a href="#0">August 06 , 2017</a></span>
-                            <span>/</span>
-                            <span><a href="#0">
-                                <em>WordPress</em>
-                            </a></span>
-                            <h5><a href="#0">Managing Their Own Websites</a></h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the dummy text ever</p>
-                            <a href="#0" className="more">Continue Reading<i className="fas fa-angle-right"></i></a>
-                        </div>
-                    </div>
-
-                </OwlCarousel>
-
-            </div>
-        </div>
-        <div className="se-tring se-tring-rev">
-            <span className="left"></span>
-            <span className="right"></span>
-        </div>
-    </section>
+    <Blogs />
 
     {/* contact */}
     <section name="contact" className="contact section-padding" data-scroll-index="5">
