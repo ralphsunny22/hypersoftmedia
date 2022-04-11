@@ -4,7 +4,7 @@ import { register } from '../actions/authActions';
 import { clearErrors } from '../actions/errorActions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Redirect, useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -19,10 +19,10 @@ const Register = () => {
         password_confirmation: ""
     })
 
-    const [errMsg, setErrMsg] = useState(null)
+    // const [errMsg, setErrMsg] = useState(null)
     const [nameErr, setNameErr] = useState(null)
     const [emailErr, setEmailErr] = useState(null)
-    const [phoneNumberErr, setPhoneNumbeErr] = useState(null)
+    const [phoneNumberErr, setPhoneNumberErr] = useState(null)
     const [passwordErr, setPasswordErr] = useState(null)
     const [passwordConfirmationErr, setPasswordConfirmationErr] = useState(null)
 
@@ -35,9 +35,10 @@ const Register = () => {
     //checking errors
     useEffect(() => {
         if(error.id === 'REGISTER_FAIL'){
-            setErrMsg(error.msg.message)
+            // setErrMsg(error.msg.message)
             setNameErr(error.msg.errors.name && error.msg.errors.name[0])
             setEmailErr(error.msg.errors.email && error.msg.errors.email[0])
+            setPhoneNumberErr(error.msg.errors.email && error.msg.errors.phone_number[0])
             setPasswordErr(error.msg.errors.password && error.msg.errors.password[0])
             setPasswordConfirmationErr(error.msg.errors.password_confirmation && error.msg.errors.password_confirmation[0])
         }
@@ -53,13 +54,15 @@ const Register = () => {
         setUser({
             name: "",
             email: "",
+            phone_number: "",
             password: "",
             password_confirmation: ""
         })
 
-        setErrMsg(null)
+        // setErrMsg(null)
         setNameErr(null)
         setEmailErr(null)
+        setPhoneNumberErr(null)
         setPasswordErr(null)
         setPasswordConfirmationErr(null)
 
@@ -81,14 +84,14 @@ const Register = () => {
                 <div className="row">
     
                     <div className="section-head text-center col-sm-12">
-                    { errMsg && <p className="alert alert-danger text-center">{errMsg}</p> }
+                    
                         <h4>Register</h4>
                         <h6>Get In Touch</h6>
                     </div>
                     
                     {/* <!-- Contact Form --> */}
                     <div className="col-md-12">
-                        <form className="form" id="contact-form" method="post" action="">
+                        <form className="form" id="contact-form" onSubmit={onSubmit}>
     
                             <div className="messages"></div>
     
@@ -98,12 +101,12 @@ const Register = () => {
     
                                     <div className="col-md-6">
                                         <div className="form-group">
-                                            <input id="form_name" type="email" name="name" placeholder="Full Name *" required="required"
+                                            <input id="form_name" type="text" name="name" placeholder="Full Name *" required="required"
                                                 data-error="Fullname is required."
                                                 value={user.name}
                                                 onChange={(e) => setUser({...user, name:e.target.value})}
                                                 />
-                                            <div className="help-block with-errors"></div>
+                                                { nameErr && <div className="help-block with-errors text-danger">{nameErr}</div> }
                                         </div>
                                     </div>
 
@@ -114,17 +117,7 @@ const Register = () => {
                                             value={user.email}
                                             onChange={(e) => setUser({...user, email:e.target.value})}
                                             />
-                                            <div className="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <input id="form_subject" type="password" name="subject" placeholder="Password" required="required"
-                                            value={user.password}
-                                            onChange={(e) => setUser({...user, password:e.target.value})}
-                                            />
-                                            <span>at least 6 characters</span>
+                                            { emailErr && <div className="help-block with-errors text-danger">{emailErr}</div> }
                                         </div>
                                     </div>
 
@@ -134,14 +127,34 @@ const Register = () => {
                                             value={user.phone_number}
                                             onChange={(e) => setUser({...user, phone_number:e.target.value})}
                                             />
-                                            <div className="help-block with-errors"></div>
+                                            { phoneNumberErr && <div className="help-block with-errors text-danger">{phoneNumberErr}</div> }
                                         </div>
                                     </div>
-    
+
+                                    <div className="col-md-3">
+                                        <div className="form-group">
+                                            <input id="form_subject" type="password" name="password" placeholder="Password" required="required"
+                                            value={user.password}
+                                            onChange={(e) => setUser({...user, password:e.target.value})}
+                                            />
+                                            { passwordErr && <div className="help-block with-errors text-danger">{passwordErr}</div> }
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3">
+                                        <div className="form-group">
+                                            <input id="form_subject" type="password" name="password_confirmation" placeholder="Confirm Password" required="required"
+                                            value={user.password_confirmation}
+                                            onChange={(e) => setUser({...user, password_confirmation:e.target.value})}
+                                            />
+                                            { passwordConfirmationErr && <div className="help-block with-errors text-danger">{passwordConfirmationErr}</div> }
+                                        </div>
+                                    </div>
+
                                     <div className="col-md-12">
-                                        <button type="submit" className="butn butn-bg"><span>Send Message</span></button>
+                                        <button type="submit" className="butn butn-bg"><span>Submit</span></button>
                                         <div className="info">
-                                            <span><strong>OR</strong> Click Login to Sign-In</span>
+                                            <span><strong>OR</strong> Click <Link to="/login" className="bg-dark p-2 text-white">Login</Link> to Sign-In</span>
                                             
                                         </div>
                                     </div>

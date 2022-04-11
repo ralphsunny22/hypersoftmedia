@@ -21,6 +21,7 @@ export const register = (user) => dispatch => {
     dispatch({
         type: REGISTER_FAIL
     });
+    console.log(err.response.data)
     });
 }
 
@@ -33,7 +34,7 @@ export const login = (user) => dispatch => {
         }
     }
 
-    axios.post('http://127.0.0.1:8000/login/', user, config).then(res=>
+    axios.post('http://127.0.0.1:8000/api/auth/login/', user, config).then(res=>
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data,
