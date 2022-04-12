@@ -1,13 +1,30 @@
 import React, { useEffect, useRef } from "react";
+import { logout } from "../actions/authActions";
 
 import { Link } from "react-scroll";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+
 import './header.css';
 
 const Header = (props) => {
 
+  const auth = useSelector((state) => state.auth);
+  const { isAuthenticated } = auth;
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
     const [scrolled, setScrolled] = React.useState(false);
+    const [next, setNext] = React.useState(false);
     // const [homepg, setHomepg] = React.useState(true);
+
+    const logoutHandle = () => {
+      dispatch(logout());
+      setNext(true)
+      navigate("/login")
+    };
 
     const handleScroll = () => {
     const offset = window.scrollY;
@@ -20,16 +37,18 @@ const Header = (props) => {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll',handleScroll)
+    window.addEventListener('scroll',handleScroll);
+    // if(next){
+    //   navigate("/login")
+    // }
   }, [])
+
     let navbarClasses=['navbar'];
     if(scrolled){
     navbarClasses.push('scrolled');
   }
 
-  const onGotoAbout = () => {
-    props.onGotoAbout()
-  }
+  
 
   // const aboutSection = useRef(null);
 
@@ -74,19 +93,22 @@ const Header = (props) => {
 
       const navLists = navItems.map((nav) => (
         <li className="nav-item" style={mystyle}>
-          <Link className="nav-link" activeClass="active" spy={true} to={nav.url} smooth={true} offset={0} duration={500}>
+          <Link className="nav-link"  spy={true} to={nav.url} smooth={true} offset={0} duration={500}>
             {nav.title}
           </Link>
         </li>
       ));
   
   return (
+  
+    //{isAuthenticated ? () : ('')};
     <>
-    
-    
-    {props.homepage==="true" ?  (
+    {/* {() => {
+      
+    }} */}
+    {props.homepage==="homepage" ?  (
       <div className={scrolled ? 'navbar scrolled' : 'navbar'}>
-      <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg">
           <div className="container">
 
                 {/* Logo */}
@@ -109,12 +131,19 @@ const Header = (props) => {
                     About
                   </NavLink>
                 </li> */}
-
-                <li className="nav-item" style={mystyle}>
-                  <NavLink exact to="/login" className="nav-link" activeClass="active">
+              {!isAuthenticated && 
+                <li className='nav-item' style={mystyle}>
+                  <NavLink exact to="/login" className="nav-link" >
                     Join Me!
                   </NavLink>
-                </li>
+                </li>}
+                
+                {isAuthenticated &&
+                <li className="nav-item" style={mystyle}>
+                  <a href="#" onClick={logoutHandle} className="nav-link">
+                    Logout
+                  </a>
+                </li>}
 
               </ul>
             </div>
@@ -122,8 +151,9 @@ const Header = (props) => {
                     
 
           </div>
-      </nav>
+        </nav>
       </div>
+
       ) : (
         <div className={scrolled ? 'navbar scrolled' : 'navbar'}>
         <nav className="navbar navbar-expand-lg">
@@ -143,22 +173,31 @@ const Header = (props) => {
               <ul className="navbar-nav ml-auto">
                 
                 <li className="nav-item" style={mystyle}>
-                  <NavLink exact to="/" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'} activeClass="active">
+                  <NavLink exact to="/" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'} >
                     Home 
                   </NavLink>
                 </li>
 
+                {!isAuthenticated && 
                 <li className="nav-item" style={mystyle}>
-                  <NavLink exact to="/register" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'} activeClass="active">
+                  <NavLink exact to="/register" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'}>
                     Register
                   </NavLink>
-                </li>
+                </li>}
 
+                {!isAuthenticated && 
                 <li className="nav-item" style={mystyle}>
-                  <NavLink exact to="/login" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'} activeClass="active">
+                  <NavLink exact to="/login" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'}>
                     Login
                   </NavLink>
-                </li>
+                </li>}
+
+                {isAuthenticated && 
+                <li className="nav-item" style={mystyle}>
+                  <a href="#" onClick={logoutHandle} className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'}>
+                    Logout
+                  </a>
+                </li>}
 
               </ul>
             </div>
@@ -168,9 +207,9 @@ const Header = (props) => {
           </div>
       </nav>
       </div>
-      ) }
-        
+      ) } 
     </>
+    
   );
 };
 

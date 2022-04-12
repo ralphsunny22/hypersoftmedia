@@ -43,7 +43,7 @@ const Home = ({posts}) => {
   
   return (
     <>
-      <Header homepage="true" onGotoAbout={gotoAbout} />
+      <Header homepage="homepage" onGotoAbout={gotoAbout} />
 
       <header className="header valign bg-img">
 

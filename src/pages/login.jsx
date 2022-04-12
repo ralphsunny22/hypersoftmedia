@@ -56,12 +56,11 @@ const Login = () => {
     }
 
     const navigate = useNavigate();
-
     if(isAuthenticated) return navigate("/");
 
     return (
         <>
-          <Header homepage="false" />
+          <Header homepage="not_homepage" />
         {/* contact */}
         <section className="contact section-padding" data-scroll-index="5">
             <div className="container">
