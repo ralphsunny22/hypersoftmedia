@@ -23,7 +23,7 @@ export default function postReducer(state = initialState, action){
                 isAuthenticated: true,
                 isLoading: false,
                 user: action.payload.user,
-                userSuccessMsg: action.payload.message
+                // userSuccessMsg: action.payload.message
                  
             }
 
@@ -45,15 +45,17 @@ export default function postReducer(state = initialState, action){
 
         case USER_LOADED:
             //check passport-jwt token
-            const jwtToken = jwtDecode(action.payload.access_token)
+            //const jwtToken = jwtDecode(action.payload.access_token)
             // console.log(testToken)
             return {
                 ...state,
                 isAuthenticated: true,
                 isLoading: false,
-                token: action.payload.access_token,
-                user: action.payload.user,
-                user_id: jwtToken.sub
+                //token: action.payload.access_token,
+                //user: action.payload.user,
+                user: action.payload,
+                //user_id: jwtToken.sub
+                //user_id: jwtToken.sub
             };
 
         

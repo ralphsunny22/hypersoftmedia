@@ -51,13 +51,13 @@ export const login = (user) => dispatch => {
 //loadUser
 export const loadUser = () => {
   return (dispatch, getState) => {
-    axios.get('http://127.0.0.1:8000/user', tokenConfig(getState)).then(res => 
+    axios.get('http://127.0.0.1:8000/api/auth/user-profile/', tokenConfig(getState)).then(res => 
     dispatch({
       type: USER_LOADED,
       payload: res.data
     }))
     .catch(err => {
-      dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(returnErrors(err.response?.data, err.response?.status));
       dispatch({
       type: AUTH_ERROR
   });
@@ -78,6 +78,7 @@ export const logout = () => {
 
     //get token from localStorage
     const token = getState().auth.token
+    //console.log(token);
 
     //Headers
     const config = {

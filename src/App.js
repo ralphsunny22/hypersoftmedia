@@ -1,10 +1,13 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import SingleBlog from "./pages/singleBlog";
 //import "./App.css";
+
+import { loadUser } from './actions/authActions';
 
 import testsrc from "./testsrc";
 import $ from 'jquery';
@@ -13,10 +16,12 @@ window.jquery = $;
 
 function App() {
   
+  const dispatch = useDispatch()
   useEffect(() => {
-    console.log('lorem');
-    //testsrc;
-  }, []);
+    dispatch(loadUser())
+    
+  }, [dispatch])
+
   return (
     <>
     {/* <button onClick={window['alertHello']}>alert</button>  */}

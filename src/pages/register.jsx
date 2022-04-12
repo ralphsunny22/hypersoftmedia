@@ -27,7 +27,8 @@ const Register = () => {
     const [passwordConfirmationErr, setPasswordConfirmationErr] = useState(null)
 
     const auth = useSelector(state => state.auth)
-    const { userSuccessMsg, isAuthenticated } = auth;
+    // const { userSuccessMsg, isAuthenticated } = auth;
+    const { isAuthenticated } = auth;
     const error = useSelector(state => state.error)
 
     const dispatch = useDispatch()
