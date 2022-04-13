@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-
 import { addContact } from '../actions/contactActions';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 const Contact = () => {
+
+    const MySwal = withReactContent(Swal)
+    
+    const showAlert = () => {
+        MySwal.fire({
+            title: <strong>Thanks for contacting</strong>,
+            html: <p>I'll get back to you soon!</p>,
+            icon: 'success',
+            confirmButtonText: "OK",
+        })
+    }
 
     //used in form, and onSubmit()
     const [postContact, setPostContact] = useState({
@@ -57,6 +69,8 @@ const Contact = () => {
             message: ""
         })
 
+        showAlert();
+
     }
 
     
@@ -70,7 +84,7 @@ const Contact = () => {
 
                         <h4>Contact Me</h4>
                         <h6>Get In Touch</h6>
-                        { contactSuccessMsg && <p className="alert alert-success text-center">Message Received Successfully. I'll get back to you</p> }
+                        
                     </div>
                     
                     {/* <!-- Contact Form --> */}
