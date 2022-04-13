@@ -67,6 +67,7 @@ const Contact = () => {
                 <div className="row">
 
                     <div className="section-head text-center col-sm-12">
+
                         <h4>Contact Me</h4>
                         <h6>Get In Touch</h6>
                         { contactSuccessMsg && <p className="alert alert-success text-center">Message Received Successfully. I'll get back to you</p> }
