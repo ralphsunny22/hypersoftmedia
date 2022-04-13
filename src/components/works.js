@@ -6,33 +6,36 @@ const Works = () => {
 
     const works = [
         {
-          id: 1,
-          logo: "work1.png",
-          title: "Funnel",
-          description: "Ebook generation and management. A web-app for generating ebooks in PDF format. The application comes handy with 5 different ways of doing so.",
-          url: "funnel.hypersoftmedia.com",
+            id: 1,
+            logo: "work5.png",
+            title: "ShopNig",
+            description: "Online store where you can purchase all your electronics, as well as books, home appliances, kiddies items, fashion items for men, women, and children; cool gadgets, computers, groceries, automobile parts, and more on the go. What more? You can have them delivered directly to you. Shop online with great ease as you",
+            url: "shopnig.com/",
         },
+
         {
             id: 2,
+            logo: "work1.png",
+            title: "Funnel",
+            description: "Ebook generation and management. A web-app for generating ebooks in PDF format. The application comes handy with 5 different ways of doing so.",
+            url: "funnel.hypersoftmedia.com",
+          },
+        
+        {
+            id: 3,
             logo: "work3.png",
             title: "Gwammu Africa",
             description: "Buy Smarter, Sell Faster! Classified Ads for Free. Post free classified advertising to attract buyers. Individuals who are real. Ads can be found quickly. Anything can be bought and sold. Registration is simple. Look for something in your area.",
             url: "gwammu.com",
         },
         {
-            id: 3,
+            id: 4,
             logo: "work4.png",
             title: "eClat",
             description: "Health Solutions for everyone. AI-powered, Patient-inspired · Electronic Medical Records · Health Insurance Management · Smarthealth · ePharmacy",
             url: "mini.eclathealthcare.com/",
         },
-        {
-            id: 4,
-            logo: "work5.png",
-            title: "ShopNig",
-            description: "Online store where you can purchase all your electronics, as well as books, home appliances, kiddies items, fashion items for men, women, and children; cool gadgets, computers, groceries, automobile parts, and more on the go. What more? You can have them delivered directly to you. Shop online with great ease as you",
-            url: "shopnig.com/",
-        },
+        
         {
             id: 5,
             logo: "work6.png",

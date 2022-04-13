@@ -28,13 +28,21 @@ const Login = () => {
 
     const dispatch = useDispatch()
 
+    const topFunction = () => {
+        window.scrollTo({ top: 0 });
+        
+      }
+
     //checking errors
     useEffect(() => {
+        topFunction()
+        
         if(error.id === 'LOGIN_FAIL'){
             setInvalidErr(error.msg.errors.invalid && error.msg.errors.invalid[0])
             setEmailErr(error.msg.errors.email && error.msg.errors.email[0])
             setPasswordErr(error.msg.errors.password && error.msg.errors.password[0])
         }
+
     }, [error])
 
     const onSubmit = (e) => {

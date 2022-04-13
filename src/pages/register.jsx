@@ -33,8 +33,16 @@ const Register = () => {
 
     const dispatch = useDispatch()
 
+    const topFunction = () => {
+        window.scrollTo({ top: 0 });
+        
+      }
+
     //checking errors
     useEffect(() => {
+
+        topFunction()
+        
         if(error.id === 'REGISTER_FAIL'){
             // setErrMsg(error.msg.message)
             setNameErr(error.msg.errors.name && error.msg.errors.name[0])

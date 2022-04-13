@@ -76,14 +76,14 @@ const Header = (props) => {
         },
         {
           id: 3,
-          title: "Services",
+          title: "Works",
           url: "services",
         },
-        {
-          id: 4,
-          title: "Blog",
-          url: "blog",
-        },
+        // {
+        //   id: 4,
+        //   title: "Blog",
+        //   url: "blog",
+        // },
         {
           id: 5,
           title: "Contact",
@@ -92,7 +92,7 @@ const Header = (props) => {
       ];
 
       const navLists = navItems.map((nav) => (
-        <li className="nav-item" style={mystyle}>
+        <li className="nav-item" style={mystyle} key={nav.id}>
           <Link className="nav-link"  spy={true} to={nav.url} smooth={true} offset={0} duration={500}>
             {nav.title}
           </Link>
@@ -133,7 +133,7 @@ const Header = (props) => {
                 </li> */}
               {!isAuthenticated && 
                 <li className='nav-item' style={mystyle}>
-                  <NavLink exact to="/login" className="nav-link" >
+                  <NavLink  to="/login" className="nav-link" >
                     Join Me!
                   </NavLink>
                 </li>}
@@ -173,21 +173,21 @@ const Header = (props) => {
               <ul className="navbar-nav ml-auto">
                 
                 <li className="nav-item" style={mystyle}>
-                  <NavLink exact to="/" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'} >
+                  <NavLink  to="/" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'} >
                     Home 
                   </NavLink>
                 </li>
 
                 {!isAuthenticated && 
                 <li className="nav-item" style={mystyle}>
-                  <NavLink exact to="/register" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'}>
+                  <NavLink  to="/register" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'}>
                     Register
                   </NavLink>
                 </li>}
 
                 {!isAuthenticated && 
                 <li className="nav-item" style={mystyle}>
-                  <NavLink exact to="/login" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'}>
+                  <NavLink  to="/login" className={scrolled ? 'nav-link text-white' : 'nav-link nav-alt-color'}>
                     Login
                   </NavLink>
                 </li>}
