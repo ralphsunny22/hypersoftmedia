@@ -1,4 +1,4 @@
-import { POSTS_LOADING, GET_POSTS, GET_POST, ADD_POST_COMMENT, ADD_POST_COMMENT_FAIL } from './types';
+import { base_url, POSTS_LOADING, GET_POSTS, GET_POST, ADD_POST_COMMENT, ADD_POST_COMMENT_FAIL } from './types';
 import axios from 'axios';
 import { returnErrors } from './errorActions';
 // import { tokenConfig } from './authActions'
@@ -6,7 +6,7 @@ import { returnErrors } from './errorActions';
 export const addPostComment = newPostComment => (dispatch) => {
   
     //slug here is post_slug
-    axios.post(`https://portfolio.hypersoftmedia.com/api/comments/${newPostComment.getAll('slug')}`, newPostComment).then(res =>
+    axios.post(`${base_url}/comments/${newPostComment.getAll('slug')}`, newPostComment).then(res =>
     dispatch({
       type: ADD_POST_COMMENT,
       payload: res.data
@@ -25,13 +25,13 @@ export const getPosts = () => dispatch => {
         type: POSTS_LOADING
     });
 
-    axios.get('https://portfolio.hypersoftmedia.com/api/posts').then(res=>
+    axios.get(`${base_url}/posts`).then(res=>
         dispatch({
             type: GET_POSTS,
             payload: res.data,
         })
     )
-    //.catch(err => {err.response.data, err.response.status})
+    ///.catch(err => {err.response.data, err.response.status})
 }
 
 export const getPost = (slug) => dispatch => {
@@ -39,7 +39,7 @@ export const getPost = (slug) => dispatch => {
         type: POSTS_LOADING
     });
 
-    axios.get(`https://portfolio.hypersoftmedia.com/api/posts/${slug}`).then(res=>
+    axios.get(`${base_url}/posts/${slug}`).then(res=>
         dispatch({
             type: GET_POST,
             payload: res.data,

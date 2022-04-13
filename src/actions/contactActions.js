@@ -1,4 +1,4 @@
-import { ADD_CONTACT, ADD_CONTACT_FAIL } from './types';
+import { base_url, ADD_CONTACT, ADD_CONTACT_FAIL } from './types';
 import axios from 'axios';
 import { returnErrors } from './errorActions';
 // import { tokenConfig } from './authActions'
@@ -6,7 +6,7 @@ import { returnErrors } from './errorActions';
 export const addContact = newContact => (dispatch) => {
   
     //slug here is post_slug
-    axios.post('https://portfolio.hypersoftmedia.com/api/contact/', newContact).then(res =>
+    axios.post(`${base_url}/contact`, newContact).then(res =>
     dispatch({
       type: ADD_CONTACT,
       payload: res.data

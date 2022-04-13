@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, AUTH_ERROR, USER_LOADED, LOGOUT_SUCCESS } from './types';
+import { base_url, REGISTER_SUCCESS, REGISTER_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, AUTH_ERROR, USER_LOADED, LOGOUT_SUCCESS } from './types';
 import axios from 'axios';
 import { returnErrors } from './errorActions'
 
@@ -11,7 +11,7 @@ export const register = (user) => dispatch => {
     }
     //https://portfolio.hypersoftmedia.com
     //https://portfolio.hypersoftmedia.com
-    axios.post('https://portfolio.hypersoftmedia.com/api/auth/register/', user, config).then(res=>
+    axios.post(`${base_url}/auth/register`, user, config).then(res=>
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data,
@@ -35,7 +35,7 @@ export const login = (user) => dispatch => {
         }
     }
 
-    axios.post('https://portfolio.hypersoftmedia.com/api/auth/login/', user, config).then(res=>
+    axios.post(`${base_url}/auth/login`, user, config).then(res=>
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data,
@@ -52,7 +52,7 @@ export const login = (user) => dispatch => {
 //loadUser
 export const loadUser = () => {
   return (dispatch, getState) => {
-    axios.get('https://portfolio.hypersoftmedia.com/api/auth/user-profile/', tokenConfig(getState)).then(res => 
+    axios.get(`${base_url}/auth/user-profile`, tokenConfig(getState)).then(res => 
     dispatch({
       type: USER_LOADED,
       payload: res.data

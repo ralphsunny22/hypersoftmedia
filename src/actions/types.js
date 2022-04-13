@@ -1,3 +1,5 @@
+export const base_url = 'https://portfolio.hypersoftmedia.com/api';
+
 export const POSTS_LOADING = 'POSTS_LOADING';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';

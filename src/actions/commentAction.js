@@ -1,4 +1,4 @@
-// import { COMMENTS_LOADING, GET_COMMENTS, GET_COMMENT } from './types';
+// import { base_url, COMMENTS_LOADING, GET_COMMENTS, GET_COMMENT } from './types';
 // import axios from 'axios';
 // // import { returnErrors } from './errorActions';
 // // import { tokenConfig } from './authActions'
@@ -8,7 +8,7 @@
 //         type: COMMENTS_LOADING
 //     });
 
-//     axios.get(`http://127.0.0.1:8000/api/comments/${post_id}`).then(res=>
+//     axios.get(`${base_url}/comments/${post_id}`).then(res=>
 //         dispatch({
 //             type: GET_COMMENTS,
 //             payload: res.data,
@@ -22,7 +22,7 @@
 //         type: COMMENTS_LOADING
 //     });
 
-//     axios.get(`http://127.0.0.1:8000/api/comments/${post_id}`).then(res=>
+//     axios.get(`${base_url}/comments/${post_id}`).then(res=>
 //         dispatch({
 //             type: GET_COMMENT,
 //             payload: res.data,
