@@ -9,8 +9,9 @@ export const register = (user) => dispatch => {
             "Content-type":"application/json"
         }
     }
-
-    axios.post('http://127.0.0.1:8000/api/auth/register/', user, config).then(res=>
+    //https://portfolio.hypersoftmedia.com
+    //https://portfolio.hypersoftmedia.com
+    axios.post('https://portfolio.hypersoftmedia.com/api/auth/register/', user, config).then(res=>
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data,
@@ -34,7 +35,7 @@ export const login = (user) => dispatch => {
         }
     }
 
-    axios.post('http://127.0.0.1:8000/api/auth/login/', user, config).then(res=>
+    axios.post('https://portfolio.hypersoftmedia.com/api/auth/login/', user, config).then(res=>
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data,
@@ -51,7 +52,7 @@ export const login = (user) => dispatch => {
 //loadUser
 export const loadUser = () => {
   return (dispatch, getState) => {
-    axios.get('http://127.0.0.1:8000/api/auth/user-profile/', tokenConfig(getState)).then(res => 
+    axios.get('https://portfolio.hypersoftmedia.com/api/auth/user-profile/', tokenConfig(getState)).then(res => 
     dispatch({
       type: USER_LOADED,
       payload: res.data

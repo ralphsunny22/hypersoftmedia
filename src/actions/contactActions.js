@@ -6,7 +6,7 @@ import { returnErrors } from './errorActions';
 export const addContact = newContact => (dispatch) => {
   
     //slug here is post_slug
-    axios.post('http://127.0.0.1:8000/api/contact/', newContact).then(res =>
+    axios.post('https://portfolio.hypersoftmedia.com/api/contact/', newContact).then(res =>
     dispatch({
       type: ADD_CONTACT,
       payload: res.data

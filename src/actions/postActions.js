@@ -6,7 +6,7 @@ import { returnErrors } from './errorActions';
 export const addPostComment = newPostComment => (dispatch) => {
   
     //slug here is post_slug
-    axios.post(`http://127.0.0.1:8000/api/comments/${newPostComment.getAll('slug')}`, newPostComment).then(res =>
+    axios.post(`https://portfolio.hypersoftmedia.com/api/comments/${newPostComment.getAll('slug')}`, newPostComment).then(res =>
     dispatch({
       type: ADD_POST_COMMENT,
       payload: res.data
@@ -25,7 +25,7 @@ export const getPosts = () => dispatch => {
         type: POSTS_LOADING
     });
 
-    axios.get('http://127.0.0.1:8000/api/posts').then(res=>
+    axios.get('https://portfolio.hypersoftmedia.com/api/posts').then(res=>
         dispatch({
             type: GET_POSTS,
             payload: res.data,
@@ -39,7 +39,7 @@ export const getPost = (slug) => dispatch => {
         type: POSTS_LOADING
     });
 
-    axios.get(`http://127.0.0.1:8000/api/posts/${slug}`).then(res=>
+    axios.get(`https://portfolio.hypersoftmedia.com/api/posts/${slug}`).then(res=>
         dispatch({
             type: GET_POST,
             payload: res.data,
