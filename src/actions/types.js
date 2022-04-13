@@ -22,3 +22,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+//contect
+export const ADD_CONTACT = 'ADD_CONTACT';
+export const ADD_CONTACT_FAIL = 'ADD_CONTACT_FAIL';
