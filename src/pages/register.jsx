@@ -42,12 +42,12 @@ const Register = () => {
     useEffect(() => {
 
         topFunction()
-        
+
         if(error.id === 'REGISTER_FAIL'){
             // setErrMsg(error.msg.message)
             setNameErr(error.msg.errors.name && error.msg.errors.name[0])
             setEmailErr(error.msg.errors.email && error.msg.errors.email[0])
-            setPhoneNumberErr(error.msg.errors.email && error.msg.errors.phone_number[0])
+            setPhoneNumberErr(error.msg.errors.phone_number && error.msg.errors.phone_number[0])
             setPasswordErr(error.msg.errors.password && error.msg.errors.password[0])
             setPasswordConfirmationErr(error.msg.errors.password_confirmation && error.msg.errors.password_confirmation[0])
         }
@@ -110,7 +110,7 @@ const Register = () => {
     
                                     <div className="col-md-6">
                                         <div className="form-group">
-                                            <input id="form_name" type="text" name="name" placeholder="Full Name *" required="required"
+                                            <input type="text" name="name" placeholder="Full Name *" required="required"
                                                 data-error="Fullname is required."
                                                 value={user.name}
                                                 onChange={(e) => setUser({...user, name:e.target.value})}
@@ -121,7 +121,7 @@ const Register = () => {
 
                                     <div className="col-md-6">
                                         <div className="form-group">
-                                            <input id="form_email" type="email" name="email" placeholder="Email *" required="required"
+                                            <input type="email" name="email" placeholder="Email *" required="required"
                                             data-error="Valid email is required."
                                             value={user.email}
                                             onChange={(e) => setUser({...user, email:e.target.value})}
@@ -132,7 +132,7 @@ const Register = () => {
 
                                     <div className="col-md-6">
                                         <div className="form-group">
-                                            <input id="form_message" type="number" min={0} name="phone_number" placeholder="Phone Number" required="required"
+                                            <input type="number" min={0} name="phone_number" placeholder="Phone Number" required="required"
                                             value={user.phone_number}
                                             onChange={(e) => setUser({...user, phone_number:e.target.value})}
                                             />
@@ -142,7 +142,7 @@ const Register = () => {
 
                                     <div className="col-md-3">
                                         <div className="form-group">
-                                            <input id="form_subject" type="password" name="password" placeholder="Password" required="required"
+                                            <input type="password" name="password" placeholder="Password" required="required"
                                             value={user.password}
                                             onChange={(e) => setUser({...user, password:e.target.value})}
                                             />
@@ -152,7 +152,7 @@ const Register = () => {
 
                                     <div className="col-md-3">
                                         <div className="form-group">
-                                            <input id="form_subject" type="password" name="password_confirmation" placeholder="Confirm Password" required="required"
+                                            <input type="password" name="password_confirmation" placeholder="Confirm Password" required="required"
                                             value={user.password_confirmation}
                                             onChange={(e) => setUser({...user, password_confirmation:e.target.value})}
                                             />
